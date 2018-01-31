@@ -7,7 +7,5 @@ For using this type `make` and then `./tool` in the terminal. This version only 
 Here is an example of a randered attractor
 
 <center>
-<video width="640" controls="controls">
-<source src="./video.mp4" type="video/mp4">
-</video>
+<blockquote class="imgur-embed-pub" lang="en" data-id="a/ZFpHB"><a href="//imgur.com/ZFpHB"></a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
 </center>
