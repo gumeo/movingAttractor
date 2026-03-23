@@ -1,29 +1,21 @@
-CC=gcc
-CXX=g++
-RM=rm -f
-CPPFLAGS=-g $(shell root-config --cflags)
-LDFLAGS=-g $(shell root-config --ldflags)
-LDLIBS=-lglut -lGLU -lGL 
+CXX      = g++
+RM       = rm -f
+CXXFLAGS = -std=c++11 -O2 -Wall
+LDLIBS   = -lglut -lGLU -lGL
 
-SRCS=main.cpp
-OBJS=$(subst .cc,.o,$(SRCS))
+SRCS = main.cpp
+OBJS = $(SRCS:.cpp=.o)
+TARGET = attractor
 
-all: tool
+all: $(TARGET)
 
-tool: $(OBJS)
-	$(CXX) $(LDFLAGS) -o tool $(OBJS) $(LDLIBS) 
+$(TARGET): $(OBJS)
+	$(CXX) $(CXXFLAGS) -o $(TARGET) $(OBJS) $(LDLIBS)
 
-depend: .depend
-
-.depend: $(SRCS)
-	$(RM) ./.depend
-	$(CXX) $(CPPFLAGS) -MM $^>>./.depend;
+%.o: %.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
-	$(RM) $(OBJS)
+	$(RM) $(OBJS) $(TARGET)
 
-distclean: clean
-	$(RM) *~ .depend
-
-include .depend
-
+.PHONY: all clean
